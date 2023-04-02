@@ -6,7 +6,7 @@ const app = express()
 const port = 3001
 
 app.use(cors())
-app.use(express.static("public"))
+app.use(express.static("docs"))
 
 app.get("/ping", (req, res) => {
   res.send("pong")
