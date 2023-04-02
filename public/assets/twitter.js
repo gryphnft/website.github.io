@@ -1,29 +1,57 @@
 ;(async function () {
-  let options = {
-    method: "GET",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  }
-
-  const collabResp = await fetch(location.origin + "/collabs", options)
-  const collabsResult = await collabResp.json()
-
   const htmlData = (info) =>
-    `<a class="rounded-xl basis-1/4 mt-10 text-2xl py-4 bg-white text-black text-center text-blue-500" href="https://twitter.com/${info.data.username}"><div class="">@${info.data.username}</div></a>`
+    `<a class="rounded-xl basis-1/4 mt-10 text-xl py-4 bg-white text-black text-center text-blue-500" href="https://twitter.com/${info}"><div>@${info}</div></a>`
+
+  const htmlDataCommunities = (info) =>
+    `<a class="rounded-xl basis-1/4 mt-10 text-xl py-4 bg-white text-black text-center text-blue-500" href="https://twitter.com/${info}"><div>@${info}</div></a>`
+
+  const alphaCommunities = [
+    "DiamondNFT",
+    "AlphaPH_",
+    "TangorCrypto",
+    "UEJJCOM",
+    "Djgirinnft",
+    "TropadaDrih",
+  ]
+
 
   const collabPlaceholder = document.getElementById("collabs")
-  collabsResult.collabs.forEach((collab) => {
+  const hosts = [
+    "SteveRyanOnline",
+    "SkurpySocial",
+    "KoKid951",
+    "doodlegenics",
+    "Famous_Dyl",
+    "s0meone_U_Know",
+    "TheVoiceOfCash",
+    "Wedripz.eth",
+    "GorillaMansion",
+    "DDish123",
+    "PuffPandas",
+    "LegendQueenWeb3",
+    "stukwan",
+    "EnvelopeCityInk",
+    "StrokeDriven",
+    "JuicyXBrat",
+    "BTBD_ImDiDi",
+    "AunySIllyMe",
+    "Cheeeebz",
+    "ZongKia",
+  ]
+
+  const collabs = ["SaanhoiClub", "GoatSquadNFT", "D_CryptoFamily"]
+
+  collabs.forEach((collab) => {
     collabPlaceholder.innerHTML += htmlData(collab)
   })
 
-  const hostsResp = await fetch(location.origin + "/hosts", options)
-  const hostsResult = await hostsResp.json()
-
   const hostsPlaceholder = document.getElementById("hosts")
-  hostsResult.hosts.forEach((host) => {
+  hosts.forEach((host) => {
     hostsPlaceholder.innerHTML += htmlData(host)
+  })
+
+  const alphaPlaceholder = document.getElementById("alpha")
+  alphaCommunities.forEach((host) => {
+    alphaPlaceholder.innerHTML += htmlDataCommunities(host)
   })
 })()
